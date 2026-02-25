@@ -1,0 +1,14 @@
+# ambiente virtual
+venv/
+.env/
+
+# cache python
+__pycache__/
+*.pyc
+
+# bancos/arquivos gerados
+chroma_db/
+uploaded_pdfs/
+
+# sistema
+.DS_Store
