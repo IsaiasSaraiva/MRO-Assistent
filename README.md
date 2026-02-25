@@ -27,10 +27,10 @@ cd MRO-Assistent
 nano .env
 ```
 
-### 3. Inserir a chave API KEY gerada no Groq
+e inserir a chave API KEY gerada no Groq
 GROQ_API_KEY=INSERIR_SUA_CHAVE_AQUI
 
-### 4. Criar e ativar o ambiente virtual
+### 3. Criar e ativar o ambiente virtual
 Linux/Mac
 
 ```bash
@@ -45,13 +45,13 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-### 5. Instalar as dependências
+### 4. Instalar as dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Executar a aplicação
+### 5. Executar a aplicação
 
 ```bash
 streamlit run main.py
