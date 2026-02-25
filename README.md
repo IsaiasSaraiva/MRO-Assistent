@@ -27,8 +27,11 @@ cd MRO-Assistent
 nano .env
 ```
 
-e inserir a chave API KEY gerada no Groq
+e inserir a chave API KEY gerada no Groq:
+
+```bash
 GROQ_API_KEY=INSERIR_SUA_CHAVE_AQUI
+```
 
 ### 3. Criar e ativar o ambiente virtual
 Linux/Mac
