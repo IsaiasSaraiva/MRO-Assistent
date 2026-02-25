@@ -6,7 +6,7 @@ Ferramenta de assistente de manutenção para documentos técnicos, utilizando *
 
 ## Requisitos
 
-- Python 3.10 ou superior  
+- Python 3.12.2 
 - Git  
 - Chave de API `GROQ_API_KEY` (necessária para acesso ao serviço de embeddings/retrieval)
 
