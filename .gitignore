@@ -1,6 +1,7 @@
 # ambiente virtual
 venv/
 .env/
+.env
 
 # cache python
 __pycache__/
@@ -9,6 +10,7 @@ __pycache__/
 # bancos/arquivos gerados
 chroma_db/
 uploaded_pdfs/
+users.db
 
 # sistema
 .DS_Store

@@ -9,27 +9,30 @@ from config import CHROMA_DB_PATH, EMBEDDING_MODEL, COLLECTION_NAME
 import chromadb
 
 class VectorStoreManager:
-    def __init__(self):
+    def __init__(self, collection_name: str = COLLECTION_NAME):
+        # Nome da coleção — parametrizado para suporte a isolamento por usuário
+        self.collection_name = collection_name
+
         # Embeddings usando modelo local
         self.embeddings = HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={'device': 'cpu'},
             encode_kwargs={'normalize_embeddings': True}
         )
-        
+
         # Cliente ChromaDB persistente
         self.client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
-        
+
         # Vector store
         self.vector_store = None
         self._initialize_vector_store()
-    
+
     def _initialize_vector_store(self):
         """Inicializa ou carrega o vector store"""
         try:
             self.vector_store = Chroma(
                 client=self.client,
-                collection_name=COLLECTION_NAME,
+                collection_name=self.collection_name,
                 embedding_function=self.embeddings
             )
         except Exception as e:
@@ -59,17 +62,21 @@ class VectorStoreManager:
     def get_collection_count(self):
         """Retorna número de documentos no banco"""
         try:
-            collection = self.client.get_collection(COLLECTION_NAME)
+            collection = self.client.get_collection(self.collection_name)
             return collection.count()
         except:
             return 0
-    
+
     def delete_collection(self):
         """Deleta toda a coleção"""
         try:
-            self.client.delete_collection(COLLECTION_NAME)
+            self.client.delete_collection(self.collection_name)
             self._initialize_vector_store()
             return True
         except Exception as e:
             print(f"Erro ao deletar coleção: {e}")
             return False
+
+    def delete_by_source(self, source_path: str) -> None:
+        """Remove all chunks whose metadata 'source' matches the given path."""
+        self.vector_store._collection.delete(where={"source": source_path})

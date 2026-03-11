@@ -50,7 +50,7 @@ class PDFProcessor:
             # OCR em português
             text = pytesseract.image_to_string(
                 image, 
-                lang='por',
+                lang='eng+por',
                 config='--psm 6 --oem 3'  # Melhor para blocos de texto
             )
             
