@@ -100,7 +100,7 @@ Acesse http://localhost:3000
 ## 👥 Equipe
 
 - Isaias Abner Lima Saraiva
-- Raphael Magalhães Coelho
+- Rafael Magalhães Coelho
 - Fábio José Justos dos Santos
 - André de Souza Tarallo
 - Marcos Davi de Souza Castro
