@@ -70,21 +70,6 @@ Acesse http://localhost:3000, clique em **Cadastre-se** e crie sua conta.
 docker-compose down
 ```
 
-## 📋 Comandos Úteis
-
-```bash
-# Ver logs em tempo real
-docker-compose logs -f
-
-# Ver logs apenas do back-end
-docker-compose logs backend -f
-
-# Ver logs apenas do front-end
-docker-compose logs frontend -f
-
-# Reiniciar os containers
-docker-compose restart
-```
 
 ---
 
