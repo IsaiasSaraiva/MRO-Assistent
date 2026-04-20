@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./Back-End
+      dockerfile: Dockerfile
+    container_name: mro-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    volumes:
+      - ./Back-End/chroma_db:/app/chroma_db
+      - ./Back-End/uploaded_pdfs:/app/uploaded_pdfs
+      - ./Back-End/Relatorio:/app/Relatorio
+      - ./Back-End/users.db:/app/users.db  # persiste o banco SQLite
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./Front-End
+      dockerfile: Dockerfile
+    container_name: mro-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
